@@ -1,5 +1,7 @@
 # Setup Nvidia CUDA Environment
 
+The platform is Ubuntu 22.04.
+
 ### Check Nvidia GPU device
 To use cuBLAS APIs, a Nvidia GPU device with tensor cores shall be available. To check if there is a Nvidia GPU card attached, 
 use the following command,
