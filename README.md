@@ -11,7 +11,7 @@ cuBLAS stands for Cuda Basic Linear Algebra Subroutines (BLAS). It is highly opt
 It also leverages tensor cores for low and mix precision matrix multiplication. 
 For the detailed reference documents, one may follow this [link](https://developer.nvidia.com/cublas) to Nvidia website.
 
-- [A Simple cuBLAS example](./cublas_simple_example.md) on how to use cuBLAS APIs
+- [A Simple cuBLAS example](./cublas_simple_example.md) on how to use cuBLAS APIs in C++
 - Performance characterisitics of cuBLAS
 - Using cuBLAS with CUDA Stream for concurrency
 ### tensorRT
