@@ -6,6 +6,11 @@
 #include <iostream>
 #include "cublas_gemv.h"
 
+void clean_comp(CuBlasGemvComp*& gemvComp, cublasHandle_t& handle, const char* err_msg) {
+    cublasDestroy(handle);
+    delete gemvComp;
+    std::cout << err_msg << std::endl;
+}
 
 int main(int argc, char** argv) {
     cublasHandle_t handle;
