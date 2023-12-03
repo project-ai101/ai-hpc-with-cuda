@@ -123,7 +123,7 @@ The getters are designed for this purpose
 ### Compile and Run
 
 ```
-$ nvcc -I${CUBLAS_INC_PATH} -lcublas cublas_gemv.cpp -o cublas_gemv
-$ ./cublas_gemv
+$ nvcc -I${CUBLAS_INC_PATH} -lcublas cublas_gemv.cpp cublas_gemv_example.cpp -o cublas_gemv_example
+$ ./cublas_gemv_example
 CuBLAS gemv computation is successful
 ```
