@@ -118,7 +118,7 @@ The getters are designed for this purpose
 
 ### C++ Code
 
-[cublas_gemv.h](./cublas_gemv.h) and [cublas_gemv.cpp](./cublas_gemv.cpp)
+[cublas_gemv.h](./cublas_gemv.h), [cublas_gemv.cpp](./cublas_gemv.cpp) and [cublas_gemv_example.cpp](./cublas_gemv_example.cpp)
 
 ### Compile and Run
 
