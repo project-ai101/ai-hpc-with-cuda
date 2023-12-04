@@ -1,4 +1,4 @@
-# cuBLAS Matrix-Vector Example in C++
+# cuBLAS Matrix-Vector Multiplication Example in C++
 
 ### Environment Setup
 The platform which is used in this example is Ubuntu 22.04.
@@ -15,9 +15,9 @@ export CUBLAS_LIB_PATH=${CUBLAS_ROOT}/lib64
 export CUBLAS_INC_PATH=${CUBLAS_ROOT}/include
 export LD_LIBRARY_PATH=${CUBLAS_LIB_PATH}:${LD_LIBRARY_PATH}
 ```
-### cuBLAS API
+### cuBLAS Matrix-Vector Multiplication API
 
-The main cuBLAS API is used is [cublasSgemv](https://docs.nvidia.com/cuda/cublas/index.html#cublas-t-gemv). 
+The main cuBLAS Matrix-Vector Multiplication API is used is [cublasSgemv](https://docs.nvidia.com/cuda/cublas/index.html#cublas-t-gemv). 
 
 ```
 cublasStatus_t cublasSgem(cublasHandle_t h, cublasOperation_t transposeOps, int m, int n,
