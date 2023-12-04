@@ -2,9 +2,13 @@
 
 This project provides in-depth tutorial articles and example codes for AI HPC programming over Nvidia GPU devices. Performance is the main focus. 
 
-### CUDA Thread and Block
+### CUDA Concurrency
+A GPU could have thousands of Cuda Cores. Each core can performance computation independently. To manage and schedule each core
+is a non-trivial task. In Nvidia Cuda computation environment, thread, block, warp and stream form a complex scheculing system. 
+This tutorial gives a bird view of the CUDA concurrency with a GPU Cuda core based matrix-matrix multiplication implementation.
 
-### CUDA Stream
+- Cuda Thread, Block, Warp and Stream Overview
+- A CUDA core based Matrix-Matrix multiplication example
 
 ### cuBLAS
 cuBLAS stands for Cuda Basic Linear Algebra Subroutines (BLAS). It is highly optimized BLAS APIs for Nvidia GPUs. 
