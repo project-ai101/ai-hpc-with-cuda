@@ -1,4 +1,4 @@
-# cuBLAS Simple Example in C++
+# cuBLAS Matrix-Vector Example in C++
 
 ### Environment Setup
 The platform which is used in this example is Ubuntu 22.04.
