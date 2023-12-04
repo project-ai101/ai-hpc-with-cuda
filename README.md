@@ -14,7 +14,7 @@ For the detailed reference documents, one may follow this [link](https://develop
 Here, two simple examples are given to show how to use APIs in C++, some performance consideration are discussed
 and stream based concurrency is reviewed. Hope they are helpful in utilize the benefits of the cuBLAS library.
 
-- [A cuBLAS Matrix-Vector multiplication API example](./cublas_matrxi_vector_multiplication_example.md) on how to use cuBLAS APIs in C++
+- [A cuBLAS Matrix-Vector multiplication API example](./cublas_matrix_vector_multiplication_example.md) on how to use cuBLAS APIs in C++
 - [A cuBLAS Matrix-Matrix multiplication API example](./cublas_matrix_matrix_multiplication_example.md) on how to use cuBLAS APIs in C++
 - Performance characterisitics of cuBLAS
 - Using cuBLAS with CUDA Stream for concurrency
