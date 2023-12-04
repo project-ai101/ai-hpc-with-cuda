@@ -17,7 +17,7 @@ export LD_LIBRARY_PATH=${CUBLAS_LIB_PATH}:${LD_LIBRARY_PATH}
 ```
 ### cuBLAS Matrix-Matrix Multiplication API
 
-The main cuBLAS Matrix-Matrix Multiplication API is used is [cublasSgemv](https://docs.nvidia.com/cuda/cublas/index.html#cublas-t-gemm). 
+The main cuBLAS Matrix-Matrix Multiplication API is used is [cublasSgemm](https://docs.nvidia.com/cuda/cublas/index.html#cublas-t-gemm). 
 
 ```
 cublasStatus_t cublasSgemm(cublasHandle_t h,
