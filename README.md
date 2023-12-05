@@ -11,7 +11,7 @@ This tutorial gives a bird view of the CUDA concurrency with a GPU Cuda core bas
 
 - [Cuda Thread, Warp, Block and Stream Overview](./thread_warp_block_stream.md)
 - [A Cuda core based Matrix-Matrix addition in C++](./cuda_mat_mat_add.md)
-- [A CUDA core based Matrix-Matrix multiplication in C++](./cuda_mat_mat_multi.md)
+- [A Cuda core based Matrix-Matrix multiplication in C++](./cuda_mat_mat_multi.md)
 
 ### cuBLAS
 cuBLAS stands for Cuda Basic Linear Algebra Subroutines (BLAS). It is highly optimized BLAS APIs for Nvidia GPUs. 
