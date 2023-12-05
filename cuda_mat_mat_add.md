@@ -75,3 +75,15 @@ template<class ValType> class CudaMatMatAddComp {
 - [cuda_mat_mat_add.h](./cuda_mat_mat_add.h)
 - [cuda_mat_mat_add.cpp](./cuda_mat_mat_add.cpp)
 - [cuda_mat_mat_add_example.cu](./cuda_mat_mat_add_example.cu)
+
+To run the example, one can compile the code with nvcc.
+
+```
+$ nvcc cuda_mat_mat_add_example.cu -o cuda_mat_mat_add
+```
+
+Then, run it. 
+```
+$ ./cuda_mat_mat_add
+Success
+```
