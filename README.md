@@ -10,7 +10,8 @@ is a non-trivial task. In Nvidia Cuda computation environment, thread, block, wa
 This tutorial gives a bird view of the CUDA concurrency with a GPU Cuda core based matrix-matrix multiplication implementation.
 
 - [Cuda Thread, Warp, Block and Stream Overview](./thread_warp_block_stream.md)
-- A CUDA core based Matrix-Matrix multiplication in C++
+- [A Cuda core based Matrix-Matrix addition in C++](./cuda_mat_mat_add.md)
+- [A CUDA core based Matrix-Matrix multiplication in C++](./cuda_mat_mat_multi.md)
 
 ### cuBLAS
 cuBLAS stands for Cuda Basic Linear Algebra Subroutines (BLAS). It is highly optimized BLAS APIs for Nvidia GPUs. 
