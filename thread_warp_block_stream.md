@@ -111,4 +111,3 @@ Third, link the computation task and the thread grid together via lauching the k
 ### in C
 [cuda_matrix_add.cu](./cuda_matrix_add.cu).
 
-### in C++
