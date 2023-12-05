@@ -1,5 +1,5 @@
 # AI HPC with Nvidia CUDA
-&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Author: Bin Tan
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -- Author: Bin Tan
 
 This project provides in-depth tutorial articles and C++ example codes for AI HPC programming over Nvidia GPU devices.
 Some performance characteritics have been discussed. 
