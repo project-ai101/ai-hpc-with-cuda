@@ -1,6 +1,7 @@
 # CUDA Thread, Warp, Block and Stream
-  Author: Bin Tan
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -- Author: Bin Tan
 
+### Overview
 A NVidia GPU consists of an array of SM (Stream Multiprocessor). For example, a Nvidia RTX 3060 GPU has 28 SMs. 
 Each SM has many CUDA cores which actually perform the instruction level computation. For example, a Nvidia RTX 3060 SM
 has 128 CUDA cores. All these cores are scheduled by the Cuda Thread, Warp, Block and Stream framework. 
@@ -20,7 +21,8 @@ three-dimensional grid. Therefore, the index of a thread block in a grid is acce
 blockIdx.y, blockIdx.z). As the same as the thread block, if the thread grid is an one-dimensional grid, both blockIdx.y and
 blockIdx.z are zero.
 
-How is the thread hirarchy related to a computation task? For example, let consider the following matrix addition,
+### Computation Task and Thread Hierarchy
+How is the thread hierarchy related to a computation task? For example, let consider the following matrix addition,
 
 ```
      C = A + B, where A, B and C are M x N matrixes.
@@ -74,16 +76,18 @@ resource limitation, each Stream Multiprocessor can support limited number of th
 all threads in a thread block need to be allocated into a single SM at once, the total number of threads each block
 can have is also limited, for example, 1024 threads per block. 
 
+### Implementation Analysis
 Now, let's have a runnable implementation of matrix addition. First, define the matrix addition kernel,
 
 ```cpp
 __global__ void matrix_add(float* a, float* b, float* c) {
     // matrixes a, b, and c are in column-major
     // convert thread index into element location index
-    int columnLen = gridDim.y * blockDim.y;
-    int elementIdx = (blockIdx.x * blockDim.x + threadIdx.x) * columnLen +
-                     (blockIdx.y * blockDim.y + threadIdx.y);
-    c[elemntIdx] = a[elementIdx] + b[elementIdx];
+    int element_x  = blockIdx.x * blockDim.x + threadIdx.x;
+    int element_y  = blockIdx.y * blockDim.y + threadIdx.y;
+    int column_len = gridDim.y * blockDim.y;
+    int element_id = element_x * column_len + element_y;
+    c[elemnt_id] = a[element_id] + b[element_id];
 }
 ```
 
@@ -104,4 +108,7 @@ Third, link the computation task and the thread grid together via lauching the k
     matrix_add <<<threadGridDim, threadBlockDim>>>(a, b, c);
 ```
 
-The final implementation, [cuda_matrix_add_example.cu](./cuda_matrix_add_example.cu).
+### in C
+[cuda_matrix_add.cu](./cuda_matrix_add.cu).
+
+### in C++
