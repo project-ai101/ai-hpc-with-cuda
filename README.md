@@ -13,8 +13,8 @@ problem with different hardware resource utilization.
 The performance (total computation times) were measured over a GeForce RTX 3060 GPU card. The links to the implementation
 details are
 
-- [GPU without L1 Cache Sharing](./cuda_common/cuda_mat_mat_multi.md), aka use_slow_path
-- [GPU with L1 Cache Sharing](./cuda_common//cuda_mat_mat_multi.md), aka use_fast_path
+- [GPU without L1 Cache Sharing](./cuda_common/cuda_mat_mat_multi.md) (aka use_slow_path)
+- [GPU with L1 Cache Sharing](./cuda_common//cuda_mat_mat_multi.md) (aka use_fast_path)
 - [Tensor Cores with cuBLAS](./cublas/cublas_matrix_matrix_multiplication_example.md)
 
 ### CUDA Concurrency
