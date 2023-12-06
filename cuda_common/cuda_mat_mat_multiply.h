@@ -49,7 +49,7 @@ template<class ValType> class CudaMatMatMultiplyComp {
 
         int init_mem();
         int load_data();
-        int perform_comp();
+        int perform_comp(bool use_fast_path=true);
         int retrieve_result();
 
         // getters to access matrix data memory
