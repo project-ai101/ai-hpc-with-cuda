@@ -118,6 +118,7 @@ The getter are designed for this purpose
 
 ```
 $ nvcc -I${CUBLAS_INC_PATH} -lcublas cublas_gemm.cpp cublas_gemm_example.cpp -o cublas_gemm_example
-$ ./cublas_gemm_example
+$ ./cublas_gemm_example 4096 4096 4096
+GEMM with size (4096, 4096, 4096) took 28.772 ms
 CuBLAS gemm computation is successful
 ```
