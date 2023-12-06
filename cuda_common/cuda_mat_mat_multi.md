@@ -27,8 +27,8 @@ them need to load K elements of $` A(i, l) `$, where $` 0 <= l < K `$, into regi
 independently. Denote $`\left(2\right)`$ as the Slow_Path which is implemented by 
 [cuda_mat_mat_multiply_slow](./cuda_mat_mat_multiply.cpp).
 
-To utilize the small L1 cache, we can parition the C into many small sub-matrixes $` C_{i, j} `$, 
-for example, 16 x 16 sub-matrixes.
+To utilize the small L1 cache, we can parition the C into many small sub-matrices $` C_{i, j} `$, 
+for example, 16 x 16 sub-matrices.
 
 ```math
 C = \begin{pmatrix}
@@ -39,7 +39,7 @@ C = \begin{pmatrix}
     \end{pmatrix}
 ```
 where $` m = M/16, n = N/16`$.
-Then, correspondently, partition both A and B into the same 16x16 sub-matrixes, $` A_{i, j} `$ and $` B_{i, j} `$. 
+Then, correspondently, partition both A and B into the same 16x16 sub-matrices, $` A_{i, j} `$ and $` B_{i, j} `$. 
 ```math
 A = \begin{pmatrix}
      A_{0,0} & A_{0,1} & \cdots & A_{0, k-1} \\
