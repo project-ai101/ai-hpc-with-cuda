@@ -5,7 +5,7 @@
 The computation task is to calculate the matrix-matrix multiplication.
 
 ```math
-\left(1\right)\hspace{3cm}        C = alpha * A * B + beta * C
+\left(1\right)\hspace{9cm}        C = alpha * A * B + beta * C \hspace{8cm}
 ```
 where A is a M x K matrix, B is a K x N matrix and C is a M x N matrix.
 Both alpha and beta are scalar float values.
@@ -13,7 +13,7 @@ Both alpha and beta are scalar float values.
 From element-wise, the problem can be interpreted as 
 
 ```math
-\left(2\right)\hspace{3cm}       C(i, j) = alpha * \sum_{l=0}^{K} A(i, l) * B(l, j) + beta * C(i, j), \quad
+\left(2\right)\hspace{4cm}       C(i, j) = alpha * \sum_{l=0}^{K} A(i, l) * B(l, j) + beta * C(i, j), \quad
 where \quad 0 <= i < M,  \quad 0 <= j < N
 ```
 
@@ -57,7 +57,7 @@ B = \begin{pmatrix}
 ```
 where $` m = M/16, n = N/16, k = K/16`$. Then, each 16 x 16 sub-matrix $` C_{i, j} `$ can be computed with
 ```math
-\left( 3 \right) \hspace{4cm} C_{i, j} = alpha * \sum_{l=0}^{k} A_{i, l} * B_{l, j} + beta * C_{i, j}, \quad
+\left( 3 \right) \hspace{5cm} C_{i, j} = alpha * \sum_{l=0}^{k} A_{i, l} * B_{l, j} + beta * C_{i, j}, \quad
 where \quad 0 <= i < m,  \quad 0 <= j < n
 ```
 With the same layout of $` C_{i,j} `$, a 16 x 16 CUDA thread block can be designed to compute $` C_{i, j} `$. 
