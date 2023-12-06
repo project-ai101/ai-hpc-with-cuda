@@ -53,15 +53,15 @@ class CuBlasGemmComp {
             A = 0,
             B,
             C,
-            TOTAL_MATRIXES
+            TOTAL_MATRICES
         };
     protected:
         int M_, N_, K_;                       // matrix dimension
 
-        float* host_mem_base_;                // the base host memory addresses for Matrixes
-        float* mat_host_[TOTAL_MATRIXES];     // host memory addresses of the Matrixes
-        float* dev_mem_base_;                 // the base GPU device memory address  for Matrixes
-        float* mat_dev_[TOTAL_MATRIXES];      // GPU device memory address of the Matrixes
+        float* host_mem_base_;                // the base host memory addresses for MATRICES
+        float* mat_host_[TOTAL_MATRICES];     // host memory addresses of the MATRICES
+        float* dev_mem_base_;                 // the base GPU device memory address  for MATRICES
+        float* mat_dev_[TOTAL_MATRICES];      // GPU device memory address of the MATRICES
 
         float alpha_;
         float beta_;
