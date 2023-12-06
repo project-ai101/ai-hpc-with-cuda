@@ -4,7 +4,23 @@
  *
  *******************************************************************************/
 
-template<class ValType> __global__ void cuda_mat_multiply(int m, int n, int k, ValType* a, ValType* b, ValType *c, float alpha, float beta) {
+template<class ValType> __global__ void cuda_mat_multiply_slow(int m, int n, int k, ValType* a, ValType* b, ValType *c, float alpha, float beta) {
+    // matrix a is a row-major matrix
+    ValType* a_row_start = a + (blockIdx.y * blockDim.y + threadIdx.y) * k;
+    // matrix b is a column-major matrix
+    ValType* b_col_start = b + (blockIdx.x * blockDim.x + threadIdx.x) * k;
+
+    float val = 0.0f;
+    for (int i = 0; i < k; i++) {
+        val += (*a_row_start++) * (*b_col_start++);
+    }
+
+   // matrix C is a column-major matrix
+   int c_pos = (blockIdx.x * blockDim.x + threadIdx.x) * m + blockIdx.y * blockDim.y + threadIdx.y;
+   c[c_pos] = alpha * val + beta * c[c_pos];
+}
+
+template<class ValType> __global__ void cuda_mat_multiply_fast(int m, int n, int k, ValType* a, ValType* b, ValType *c, float alpha, float beta) {
    // matrix A is a row-major matrix
    int a_sub_data_start_pos = blockIdx.y * blockDim.y * k;
    // matrix B is a column-major matrix
@@ -114,11 +130,15 @@ template<class ValType> int CudaMatMatMultiplyComp<ValType>::load_data() {
    return RETURN_SUCCESS;
 }
 
-template<class ValType> int CudaMatMatMultiplyComp<ValType>::perform_comp() {
+template<class ValType> int CudaMatMatMultiplyComp<ValType>::perform_comp(bool use_fast_path) {
     dim3 threadBlockDim(BLOCK_SIZE, BLOCK_SIZE);
     dim3 threadGridDim(m_/BLOCK_SIZE, n_/BLOCK_SIZE);
-    cuda_mat_multiply<<<threadGridDim, threadBlockDim, 0>>>(m_, n_, k_, mat_dev_[0], mat_dev_[1], mat_dev_[2], alpha_, beta_);
 
+    if (use_fast_path) {
+        cuda_mat_multiply_fast<<<threadGridDim, threadBlockDim, 0>>>(m_, n_, k_, mat_dev_[0], mat_dev_[1], mat_dev_[2], alpha_, beta_);
+    } else {
+        cuda_mat_multiply_slow<<<threadGridDim, threadBlockDim, 0>>>(m_, n_, k_, mat_dev_[0], mat_dev_[1], mat_dev_[2], alpha_, beta_);
+    }
     if (cudaGetLastError() != cudaSuccess) {
         // failed to lauch kernel
         std::cout << "Failed to launch cuda_mat_multiply kernel" << std::endl;
