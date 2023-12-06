@@ -22,6 +22,18 @@ int main(int argc, char** argv) {
    int K = 4096;
    float alpha = 1.0f;
    float beta = 1.0f;
+   bool use_fast_path = true;
+
+   if (argc > 2 || (argc == 2 && strcasecmp(argv[1], "false") != 0)) {
+       std::cout << "Usage - fast path: ./cuda_mat_mat_multiply" << std::endl;
+       std::cout << "Usage - slow path: ./cuda_mat_mat_multiply false" << std::endl;
+       return EXIT_FAILURE;
+   }
+
+   if (argc == 2) {
+       use_fast_path = false;
+   }
+
    MultiplyCompFloat* mulcomp = new MultiplyCompFloat(N, N, N, alpha, beta);
 
 
@@ -64,7 +76,7 @@ int main(int argc, char** argv) {
 
    struct timeval comp_start, comp_end;
    gettimeofday(&comp_start, nullptr);
-   if (mulcomp->perform_comp() != RETURN_SUCCESS) {
+   if (mulcomp->perform_comp(use_fast_path) != RETURN_SUCCESS) {
        delete mulcomp;
        return EXIT_FAILURE;
    }
@@ -105,8 +117,14 @@ int main(int argc, char** argv) {
    delete mulcomp;
 
    std::cout << "Success" << std::endl;
-   std::cout << "Total Comp Time of Matrix Matrix Multiplication with size ("
-             << M << ", " << N << ", " << K << ") is "
+   std::cout << "Matrix-Matrix-Multiplication - ";
+   if (use_fast_path) {
+       std::cout << "Fast Path: ";
+   } else {
+       std::cout << "Slow Path: ";
+   }
+   std::cout << " size ("
+             << M << ", " << N << ", " << K << "), total comp time "
              << total_comp_time << " milliseconds"
              << std::endl;
 
