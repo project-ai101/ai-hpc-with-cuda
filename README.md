@@ -8,7 +8,7 @@ problem with different hardware resource utilization.
 
 |   Nvidia GPU Card   | GPU without L1 Cache Sharing |   GPU with L1 Cache Sharing   |     Tensor Cores with cuBLAS        |
 |:-------------------:|:----------------------------:|:-----------------------------:|:-----------------------------------:|
-|  Geforce RTX 3060   |       733 milliseconds       |          164 milliseconds     |          29 milliseconds            |
+|      RTX 3060       |       733 milliseconds       |          164 milliseconds     |          29 milliseconds            |
 
 The performance (total computation times) were measured over a GeForce RTX 3060 GPU card for solving a (4096, 4096, 4096)
 Matrix-Matrix multiplication problem. The links to the implementation details are
