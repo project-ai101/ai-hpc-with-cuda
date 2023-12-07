@@ -39,7 +39,11 @@ and stream based concurrency is reviewed. Hope they are helpful in utilize the b
 - Performance characterisitics of cuBLAS
 - Using cuBLAS with CUDA Stream for concurrency
 
-### tensorRT
+### cuTENSOR
+cuTENSOR is a Nvidia GPU accelerated library from Nvidia for tensor contraction, reduction and element-wise operations. Since a matrix
+can be considered as a tensor with order 2, in section, the matrix matrix multiplication is re-implemented in C++ with cuTENSOR.
+
+- [Matrix-Matrix Multiplication in C++ with cuTESOR](./cutensor/matrix-matrix-multiplication.md).
 
 ### NCCL
 NCCL is a distributed backend software to support multi-gpu computation. In this section, two examples are given.
