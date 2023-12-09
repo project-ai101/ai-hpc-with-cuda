@@ -6,7 +6,7 @@ Some performance characteritics have been discussed.
 
 The following performance metric table demonstrates
 a significant performance (total computation time) difference for solving the same matrix-matrix multiplication
-problem in dim size of (M=4096, N=4096, K=4096) with different hardware resource utilization and libraries usage.
+problem in dimension (M=4096, N=4096, K=4096) with different hardware resource utilization and libraries usage.
 
 |   Nvidia GPU   | GPU without L1 Cache Sharing | GPU Cores with L1 Cache Sharing | Tensor Cores with cuBLAS  | Tensor Cores with cuTENSOR |
 |:--------------:|:----------------------------:|:-------------------------------:|:-------------------------:|:--------------------------:|
