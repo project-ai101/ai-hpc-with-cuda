@@ -6,14 +6,13 @@ Some performance characteritics have been discussed.
 
 The following performance metric table demonstrates
 a significant performance (total computation time) difference for solving the same matrix-matrix multiplication
-problem with different hardware resource utilization and libraries usage.
+problem in dim size of (M=4096, N=4096, K=4096) with different hardware resource utilization and libraries usage.
 
 |   Nvidia GPU   | GPU without L1 Cache Sharing | GPU Cores with L1 Cache Sharing | Tensor Cores with cuBLAS  | Tensor Cores with cuTENSOR |
 |:--------------:|:----------------------------:|:-------------------------------:|:-------------------------:|:--------------------------:|
 |      RTX 3060  |      733 milliseconds        |          164 milliseconds       |  29 milliseconds          |      24 milliseconds       |
 
-The performance (total computation times) were measured over a GeForce RTX 3060 GPU card for solving a (4096, 4096, 4096)
-Matrix-Matrix multiplication problem. The links to the implementation details are
+The performance (total computation times) were measured over a GeForce RTX 3060 GPU card. The links to the implementation details are
 
 - [GPU without L1 Cache Sharing](./cuda_common/cuda_mat_mat_multi.md) (aka use_slow_path)
 - [GPU with L1 Cache Sharing](./cuda_common//cuda_mat_mat_multi.md) (aka use_fast_path)
