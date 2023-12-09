@@ -6,9 +6,9 @@ Some performance characteritics have been discussed. For example, the following 
 a significant performance (total computation time) difference for solving the same matrix-matrix multiplication
 problem with different hardware resource utilization.
 
-|   Nvidia GPU   | GPU without L1 Cache Sharing |   GPU with L1 Cache Sharing   |     Tensor Cores with cuBLAS        |
-|:--------------:|:----------------------------:|:-----------------------------:|:-----------------------------------:|
-|      RTX 3060  |       733 milliseconds       |          164 milliseconds     |          29 milliseconds            |
+|   Nvidia GPU   | GPU without L1 Cache Sharing | GPU Cores with L1 Cache Sharing | Tensor Cores with cuBLAS  | Tensor Cores with cuTENSOR |
+|:--------------:|:----------------------------:|:-------------------------------:|:-------------------------:|:--------------------------:|
+|      RTX 3060  |      733 milliseconds        |          164 milliseconds       |  29 milliseconds          |      24 milliseconds       |
 
 The performance (total computation times) were measured over a GeForce RTX 3060 GPU card for solving a (4096, 4096, 4096)
 Matrix-Matrix multiplication problem. The links to the implementation details are
