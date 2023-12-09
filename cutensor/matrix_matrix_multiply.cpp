@@ -4,7 +4,7 @@
  *
  *******************************************************************************/
 #include <iostream>
-#include "cutensor_mm_multiply.h"
+#include "matrix_matrix_multiply.h"
 
 
 MatrixTensor::MatrixTensor(int row_mode, int row_extend, int col_mode, int col_extend) {
