@@ -41,7 +41,8 @@ and stream based concurrency is reviewed. Hope they are helpful in utilize the b
 
 ### cuTENSOR
 cuTENSOR is a Nvidia GPU accelerated library from Nvidia for tensor contraction, reduction and element-wise operations. Since a matrix
-can be considered as a tensor with order 2, in section, the matrix matrix multiplication is re-implemented in C++ with cuTENSOR.
+can be considered as a tensor with order 2, in this section, the matrix matrix multiplication is re-implemented in C++ with the cuTENSOR library.
+The performance is about 17% improvement comparing with the implementation with the cuBLAS library.
 
 - [Matrix-Matrix Multiplication in C++ with cuTENSOR](./cutensor/matrix-matrix-multiplication.md).
 
