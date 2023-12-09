@@ -2,9 +2,11 @@
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -- Author: Bin Tan
 
 This project provides in-depth tutorial articles and C++ example codes for AI HPC programming over Nvidia GPU devices.
-Some performance characteritics have been discussed. For example, the following performance metric table demonstrates
+Some performance characteritics have been discussed. 
+
+The following performance metric table demonstrates
 a significant performance (total computation time) difference for solving the same matrix-matrix multiplication
-problem with different hardware resource utilization.
+problem with different hardware resource utilization and libraries usage.
 
 |   Nvidia GPU   | GPU without L1 Cache Sharing | GPU Cores with L1 Cache Sharing | Tensor Cores with cuBLAS  | Tensor Cores with cuTENSOR |
 |:--------------:|:----------------------------:|:-------------------------------:|:-------------------------:|:--------------------------:|
