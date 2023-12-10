@@ -47,7 +47,7 @@ The performance is about 17% improvement comparing with the implementation with 
 
 - [Matrix-Matrix Multiplication in C++ with cuTENSOR](./cutensor/matrix-matrix-multiplication.md).
 
-### NCCL
+### Distributed GPUs with MPI and NCCL
 NCCL is a distributed backend software to support multi-gpu computation. In this section, two examples are given.
 
 - Compute Matrix-Matrix Multiplication with two GPUs on the same host.
