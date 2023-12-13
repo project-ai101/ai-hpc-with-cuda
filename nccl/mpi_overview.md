@@ -74,7 +74,7 @@ The above two APIs reflect one important implementation fact which is that for a
 can be retrieved by MPI_Comm_group. However, for a group, there may not be a MPI communicator associated with it. If so, it has to
 explicitly create one via MPI_Comm_create_group.
 
-
+This is [an example](./mpi_group_example.cpp) to demonstrate above discussion about the group concept.
 
 
 ### Connector and Acceptor
