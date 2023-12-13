@@ -1,5 +1,5 @@
 # MPI Overview
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp - Author: Bin Tan
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Author: Bin Tan
 
 MPI (Message Passing Interface) is a well known distributed computation framework for HPC for 
 many years. One implementation is [Open MPI](https://www.open-mpi.org). In this tutorial, 
