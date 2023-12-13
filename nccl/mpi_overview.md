@@ -23,10 +23,10 @@ processes for an application. This default communicator is created when the mpir
 is executed. For example,
 
 ```
-$ mpirun -n 2 -host node1:1,node2:1 example_application
+$ mpirun -n 2 -host node1:1,node2:1 ./mpi_hello_world
 ```
 This command shall create two processes. One is on the node1 and one is on the node2. Each 
-process shall execute example_application. The following code shows how to access the MPI_COMM_WORLD
+process shall execute application mpi_hello_world. The following code shows how to access the MPI_COMM_WORLD
 within the example_application
 
 ```cpp
@@ -38,7 +38,9 @@ within the example_application
     MPI_Comm_rank(MPI_COMM_WORLD, &myRank);
     
 ```
-After the rank is identified, example_application knows which process it is running in.
+After the rank is identified, example_application can know which process it is running with. The option
+"-n 2" means mpirun shall create two processes and the option "-host node1:1,node2:1" tells mpirun to
+create one process on each node1 and node2. Here is the code of the simple [Hello World example](./mpi_hello_world.cpp).
 
 ### Group and InterCommunicator
 
