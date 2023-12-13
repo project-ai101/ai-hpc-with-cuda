@@ -48,11 +48,13 @@ The performance is about 17% improvement comparing with the implementation with 
 - [Matrix-Matrix Multiplication in C++ with cuTENSOR](./cutensor/matrix-matrix-multiplication.md).
 
 ### Distributed GPUs with MPI and NCCL
-NCCL is a distributed backend software built over MPI to support multi-gpu computation. 
-In this section, two examples on NCCL usage are given.
+For LLMs, training and inference may involve with many GPUs. A distributed computation framework is a must. 
+MPI is a natural selection as it has been used for many years in HPC. Nvidia extends MPI to NCCL support multi-gpu computation. 
 
-- Compute Matrix-Matrix Multiplication with two GPUs on the same host.
-- Compute Matrix-Matrix Multiplication with four GPUs on two hosts.
+- [MPI Overview](./nccl/mpi_overview.md)
+- [NCCL Overview](./nccl/nccl_overview.md)
+- [Compute Matrix-Matrix Multiplication with two GPUs on the same host](./nccl/nccl_mmm_single_node.md)
+- [Compute Matrix-Matrix Multiplication with four GPUs on two hosts](./nccl/nccl_mmm_multi_nodes.md)
 
 ### Nsight Compute
 Nsight Compute is a performance analysis tool from Nvidia. For the old version Cuda, one may use the nvprof tool instead. 
