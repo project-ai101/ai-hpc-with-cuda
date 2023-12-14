@@ -42,7 +42,7 @@ After the rank is identified, example_application can know which process it is r
 "-n 2" means mpirun shall create two processes and the option "-host node1:1,node2:1" tells mpirun to
 create one process on each node1 and node2. Here is the code of the simple [Hello World example](./mpi_hello_world.cpp).
 
-### Group and InterCommunicator
+### Group
 The default communicator, MPI_COMM_WORLD, contains all processes created by the mpirun command. For point-to-point communication,
 it seems sufficient. However, for collective operation communication, in many situations, all processes  is not
 preferrable. Therefore, a concept to capture a subset of all processes is desirable. The new concept is called group. 
@@ -76,11 +76,61 @@ explicitly create one via MPI_Comm_create_group.
 
 This is [an example](./mpi_group_example.cpp) to demonstrate above discussion about the group concept.
 
+```
+$ mpirun -n 6 -host gpt-1:3,gpt-2:3 ./mpi_group_example
+The process 0 in sub group 0 with sub group rank 0 received broadcast value 2
+The process 1 in sub group 0 with sub group rank 1 received broadcast value 2
+The process 2 in sub group 1 with sub group rank 0 received broadcast value 3
+The process 4 in sub group 2 with sub group rank 0 received broadcast value 4
+The process 5 in sub group 2 with sub group rank 1 received broadcast value 4
+The process 3 in sub group 1 with sub group rank 1 received broadcast value 3
+-----------------------------------------------
+Process 0 is not in the diff sub group
+The process 2 in sub group 1 with sub group rank 0 and with new sub group rank 0 in sub group 0_1 union received broadcast value 101
+Process 1 is not in the diff sub group
+The process 4 in sub group 2 with sub group rank 0 and with new sub group rank 2 in sub group 0_1 union received broadcast value 101
+The process 5 in sub group 2 with sub group rank 1 and with new sub group rank 3 in sub group 0_1 union received broadcast value 101
+The process 3 in sub group 1 with sub group rank 1 and with new sub group rank 1 in sub group 0_1 union received broadcast value 101
+```
 
-### Connector and Acceptor
+### Inter-Communicator and Point-to-Point Communication
 
-### Blocking and Barrier
+A communicator can be either an inter-communicator or intra-communicator but not both. An inter-communicator is a point-to-point
+communication between processes in different groups. An inter-communicator can not be used for collective communication. 
 
-### Point-to-Point Communication
+To create an inter-communicator, two disjoint groups are created first. The group can be created with following API
+based on the default group associated with the default communicator, MPI_COMM_WORLD,
 
-### Collective Operations
+```c
+    int MPI_Group_incl(MPI_Group group, int n, const int ranks[], MPI_Group *newgroup)
+```
+Then, two disjoint communicators are created based on the two disjoint groups with the following API
+
+```c
+    int MPI_Comm_create_group(MPI_Comm comm, MPI_Group group, int tag, MPI_Comm *newcomm)
+```
+
+Here, the tag is very important and it must be the same in the MPI_Comm_create_group API call for all processes. 
+
+Then, an inter-communicator can be created with 
+
+```c
+    int MPI_Intercomm_create(MPI_Comm local_comm, int local_leader,
+                             MPI_Comm peer_comm, int peer_leader,
+                             int tag,
+                             MPI_Comm* newintercomm)
+```
+
+After the inter-communicator is created, the following point-to-point communication APIs can be used for sending and 
+receiving data.
+
+```c
+    int MPI_Send(const void* buf, int count, MPI_Datatype datatype,
+                 int dest, int tag, MPI_Comm comm)
+    int MPI_Recv(void* buf, int count, MPI_Datatype datatype,
+                 int source, int tag, MPI_Comm comm, MPI_Status *status)
+```
+
+The complete implementation is [here](./mpi_inter_comm.cpp).
+
+### Intra-Communicator and Collective Communication
