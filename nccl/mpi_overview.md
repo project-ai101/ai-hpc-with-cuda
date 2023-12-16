@@ -104,21 +104,15 @@ based on the default group associated with the default communicator, MPI_COMM_WO
 ```c
     int MPI_Group_incl(MPI_Group group, int n, const int ranks[], MPI_Group *newgroup)
 ```
-Then, two disjoint communicators are created based on the two disjoint groups with the following API
+
+Then, an inter-communicator can be created with following API,
 
 ```c
-    int MPI_Comm_create_group(MPI_Comm comm, MPI_Group group, int tag, MPI_Comm *newcomm)
-```
-
-Here, the tag is very important and it must be the same in the MPI_Comm_create_group API call for all processes. 
-
-Then, an inter-communicator can be created with 
-
-```c
-    int MPI_Intercomm_create(MPI_Comm local_comm, int local_leader,
-                             MPI_Comm peer_comm, int peer_leader,
-                             int tag,
-                             MPI_Comm* newintercomm)
+    int MPI_Intercomm_create_from_groups(MPI_Group local_group, int local_leader,
+                                         MPI_Group remote_group, int remote_leader,
+                                         const char* stringtag,
+                                         MPI_Errhandler errhandler,
+                                         MPI_Comm* newintercomm)
 ```
 
 After the inter-communicator is created, the following point-to-point communication APIs can be used for sending and 
@@ -131,6 +125,8 @@ receiving data.
                  int source, int tag, MPI_Comm comm, MPI_Status *status)
 ```
 
-The complete implementation is [here](./mpi_inter_comm.cpp).
+The complete implemented [example](./mpi_inter_comm.cpp), two disjoint groups with world wide ranks
+{0, 1, 2} and { 3, 4, 5} are created. After a sub group is created, each process shall be assigned a new 
+rank with respect to the sub group. Therefore, each process shall have two ranks.
 
 ### Intra-Communicator and Collective Communication
