@@ -7,11 +7,9 @@ basic and fundamental concepts are discussed and several examples are developed 
 understand the concepts in depth. They are grouped into following 6 categories
 
 - Communicator and Rank
-- Group and InterCommunicator
-- Connector and Acceptor
-- Blocking and Barrier
-- Point-to-Point Communication
-- Collective Operations
+- Group
+- Inter-Communicator and Point-to-Point Communication
+- Intra-Communicator and Collective Operations
 
 ### Communicator and Rank
 In a distributed computation world, how to communicate among the processes is essential. 
@@ -130,3 +128,50 @@ The complete implemented [example](./mpi_inter_comm.cpp), two disjoint groups wi
 rank with respect to the sub group. Therefore, each process shall have two ranks.
 
 ### Intra-Communicator and Collective Communication
+An Intra-Communicator is able to suppor collective communication operation. Each collective communication operation 
+invovles all member processes in the communicator. For example, MPI_Bcast API,
+```c
+    int MPI_Bcast(void* buffer, int count, MPI_Datatype datatype, int root, MPI_Comm comm)
+```
+shall broadcast the send buffer to all the processes which are the members of the intra-communicator, comm. 
+This API is a blocking call untill all member processes finish the call. To facilitate the broadcast capability,
+all member processes need to call this API with the same root and comm arguments. The root process is the process
+which generates the original content of the buffer. It does not mean the root of the communicator or the lead
+rank of the communicator. It only has an API call scope.
+
+Another common used collective communication API is,
+```c
+    int MPI_Reduce(const void* sendbuf, void* recvbuf, int count, MPI_Datatype datatpye,
+                   MPI_Op op, int root, MPI_Comm comm)
+```
+where MPI_Op has following pre-defined handle,
+```c
+     MPI_OP_NULL,
+     MPI_MAX,
+     MPI_MIN,
+     MPI_SUN,
+     MPI_PROD,
+     MPI_LAND,
+     MPI_BAND,
+     MPI_LOR,
+     MPI_BOR,
+     MPI_LXOR,
+     MPI_BXOR,
+     MPI_MINLOC,
+     MPI_MAXLOC,
+     MPI_REPLACE
+```
+The reduce call is a global collective operation which perform elementwise op on the sendbuf from each process and write
+the results into the recvbuf in the process whose rank is equal to the root argument. All the member processes of 
+the communicator comm must call this API with the same count, datatype, op, root and comm arguments. The sendbuf
+and recvbuf are per process basis. 
+
+Further, the MPI_Op op can be customized with the following API for an application
+```c
+    int MPI_Op_create(MPI_User_function *f, int commute, MPI_Op *op)
+```
+where the MPI_User_function f must have the following signature,
+```c
+    void MPI_User_function(void *invec, void* inoutvec, int *len, MPI_Datatype *datatype).
+```
+[mpi_intra_comm.cpp](./mpi_intra_comm.cpp) defines a customized op to multiply a row of a matrix with a vector.
