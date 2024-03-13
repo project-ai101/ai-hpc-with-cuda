@@ -2,7 +2,8 @@
 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; -- Author: Bin Tan
 
 This project provides in-depth tutorial articles and C++ example codes for AI HPC programming over Nvidia GPU devices.
-Some performance characteritics have been discussed. 
+Some performance characteritics have been discussed. For the cluster level LLM performance, one may refer to my 
+[LLM Cluster Performance](https://github.com/project-ai101/llm-cluster-perf) repository.
 
 The following performance metric table demonstrates
 a significant performance (total computation time) difference for solving the same matrix-matrix multiplication
