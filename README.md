@@ -14,9 +14,12 @@ problem in dimension (M=4096, N=4096, K=4096) with different hardware resource u
 |   Nvidia GPU   | GPU without L1 Cache Sharing | GPU Cores with L1 Cache Sharing | Tensor Cores with cuBLAS  | Tensor Cores with cuTENSOR |
 |:--------------:|:----------------------------:|:-------------------------------:|:-------------------------:|:--------------------------:|
 |      RTX 3060  |      733 milliseconds        |          164 milliseconds       |  29 milliseconds          |      24 milliseconds       |
-| RTX 4070 Ti    |      233 milliseconds        |          59  milliseconds       |  14 milliseconds          |      23 milliseconds       |
+| RTX 4060 Ti    |      432 milliseconds        |          117 milliseconds       |  18 milliseconds          |      17 milliseconds       |    
+| RTX 4070 Ti S  |      233 milliseconds        |          59  milliseconds       |  14 milliseconds          |      23 milliseconds       |
 
-The performance (total computation times) were measured over a GeForce RTX 3060 GPU card. The links to the implementation details are
+The performance (total computation times including kernel launch) were measured over a GeForce RTX 3060 GPU card, a GeForce RTX 4060 Ti card
+and a GeForce RTX 4070 Ti Super card.  RTX 3060 has Gen 3 Tensor cores and both RTX 4060 and RTX 4070 have Gen 4 Tensor cores.
+The links to the implementation details are
 
 - [GPU without L1 Cache Sharing](./cuda_common/cuda_mat_mat_multi.md) (aka use_slow_path)
 - [GPU with L1 Cache Sharing](./cuda_common//cuda_mat_mat_multi.md) (aka use_fast_path)
