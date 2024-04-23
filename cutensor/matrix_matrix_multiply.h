@@ -8,6 +8,7 @@ ifndef CUTENSOR_MATRIX_MATRIX_MULTIPLY_HH_
 
 #include <cuda_runtime.h>
 #include <cutensor.h>
+#include <cutensor/types.h>
 
 #define RETURN_FAILURE -1
 #define RETURN_SUCCESS 1
